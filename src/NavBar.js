@@ -10,7 +10,7 @@ import {
   Button
 } from "reactstrap";
 
-class NavBar extends React.Component {
+class NavBar extends Component {
   constructor(props) {
     super(props);
 

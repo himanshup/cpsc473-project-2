@@ -1,0 +1,23 @@
+/* .jumbotron {
+  background: url("https://fortunedotcom.files.wordpress.com/2016/09/89764428.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 300px;
+} */
+#title {
+  margin-top: 25px;
+}
+
+li {
+  list-style: none;
+}
+
+.removeBtn {
+  color: red;
+}
+
+.removeBtn:hover {
+  color: red;
+  text-decoration: none;
+}

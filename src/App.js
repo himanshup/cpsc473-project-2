@@ -6,10 +6,6 @@ import Restaurants from "./Restaurants";
 import Order from "./Order";
 
 class App extends Component {
-  componentDidMount() {
-    document.title = "Restaurants";
-  }
-
   render() {
     return (
       <div>

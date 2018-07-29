@@ -13,7 +13,7 @@ import {
   Badge
 } from "reactstrap";
 
-class Restaurants extends React.Component {
+class Restaurants extends Component {
   componentDidMount() {
     document.title = "Restaurants";
   }
