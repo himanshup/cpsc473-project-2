@@ -3,7 +3,8 @@ import { Switch, Route } from "react-router-dom";
 import "./App.css";
 import NavBar from "./NavBar";
 import Restaurants from "./Restaurants";
-import Order from "./Order";
+import McDonalds from "./McDonalds";
+import Panda from "./Panda";
 
 class App extends Component {
   render() {
@@ -12,7 +13,8 @@ class App extends Component {
         <NavBar />
         <Switch>
           <Route exact path="/" component={Restaurants} />
-          <Route path="/order" component={Order} />
+          <Route path="/mcdonalds" component={McDonalds} />
+          <Route path="/panda-express" component={Panda} />
         </Switch>
       </div>
     );
