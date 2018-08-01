@@ -51,19 +51,28 @@ class Driver extends Component {
       .update({ driver: "Bob" });
   }
   handleDriverPickUp(orderNumber) {
+    var d = new Date();
+
     db.collection("orders")
       .doc(orderNumber.toString())
       .update({
         status: "Picked Up, being delivered",
-        timePickedUp: new Date().toString()
+        timePickedUp:
+          d.toLocaleDateString() + " at " + new Date().toLocaleTimeString()
       });
   }
 
   handleDriverDelivered(orderNumber) {
+    var d = new Date();
+
     this.setState({ driverViewAvailable: true });
     db.collection("orders")
       .doc(orderNumber.toString())
-      .update({ status: "Complete", timeDelivered: new Date().toString() });
+      .update({
+        status: "Complete",
+        timeDelivered:
+          d.toLocaleDateString() + " at " + new Date().toLocaleTimeString()
+      });
   }
 
   renderDriverScreen() {

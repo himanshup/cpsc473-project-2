@@ -8,6 +8,7 @@ import Panda from "./Panda";
 import Orders from "./Orders";
 import RestaurantScreen from "./RestaurantScreen";
 import Driver from "./Driver";
+import RestaurantAdmin from "./RestaurantAdmin";
 
 class App extends Component {
   render() {
@@ -21,6 +22,7 @@ class App extends Component {
           <Route path="/orders" component={Orders} />
           <Route path="/restaurantscreen" component={RestaurantScreen} />
           <Route path="/driver" component={Driver} />
+          <Route path="/restaurantadmin" component={RestaurantAdmin} />
         </Switch>
       </div>
     );

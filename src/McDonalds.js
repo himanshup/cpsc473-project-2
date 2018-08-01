@@ -56,9 +56,17 @@ class McDonalds extends Component {
       });
     this.item = db
       .collection("restaurants/restaurant1/menu")
+      .where("soldout", "==", false)
       .onSnapshot(collection => {
         const items = collection.docs.map(doc => doc.data());
         this.setState({ items });
+      });
+    this.itemSoldOut = db
+      .collection("restaurants/restaurant1/menu")
+      .where("soldout", "==", true)
+      .onSnapshot(collection => {
+        const itemsSoldOut = collection.docs.map(doc => doc.data());
+        this.setState({ itemsSoldOut });
       });
     db.doc("restaurants/restaurant1")
       .get()
@@ -72,10 +80,12 @@ class McDonalds extends Component {
 
   componentWillUnmount() {
     this.item();
+    this.itemSoldOut();
     this.unRegisterUserCurrentOrders();
   }
 
   handleSubmit(orderNumber, item, restaurant, restAddress) {
+    var d = new Date();
     const newOrder = {
       orderNumber: orderNumber,
       username: "harold",
@@ -85,7 +95,8 @@ class McDonalds extends Component {
       driver: "-unassigned-",
       status: "Order Sent",
       resturant: restaurant,
-      timeSubmitted: new Date().toString(),
+      timeSubmitted:
+        d.toLocaleDateString() + " at " + new Date().toLocaleTimeString(),
       timePickedUp: "",
       timeDelivered: ""
     };
@@ -136,8 +147,41 @@ class McDonalds extends Component {
                 </Card>
               </Col>
             ))}
+          {this.state.itemsSoldOut &&
+            this.state.itemsSoldOut.map((menuItem, index) => (
+              <Col xs="12" sm="12" md="6" lg="4" key={index}>
+                <Card className="border-0 shadow">
+                  <CardBody>
+                    <CardTitle>{menuItem.name} (SOLD OUT)</CardTitle>
+                    <CardSubtitle>{menuItem.calories} Calories</CardSubtitle>
+                    <CardText>
+                      <small className="text-muted">
+                        {menuItem.description}
+                      </small>
+                    </CardText>
+                    <Link to="/orders">
+                      <Button
+                        color="danger"
+                        size="sm"
+                        onClick={e =>
+                          this.handleSubmit(
+                            this.state.orderNumber,
+                            menuItem.name,
+                            this.state.restaurantName,
+                            this.state.restaurantAddress
+                          )
+                        }
+                        disabled
+                      >
+                        Order
+                      </Button>
+                    </Link>
+                  </CardBody>
+                </Card>
+              </Col>
+            ))}
 
-          <Col xs="12" sm="12" md="12" lg="4">
+          {/* <Col xs="12" sm="12" md="12" lg="4">
             <Card className="border-0 shadow">
               <CardBody>
                 <CardTitle>Current Order</CardTitle>
@@ -163,12 +207,21 @@ class McDonalds extends Component {
                   ))}
               </CardBody>
             </Card>
-          </Col>
+          </Col> */}
 
           {/* <Col xs="12" sm="12" md="12" lg="4">
             <Card className="border-0 shadow-lg">
-              <CardTitle>Title</CardTitle>
-              <CardText>Stuff</CardText>
+              <ul class="list-group list-group-flush">
+                <li class="list-group-item">
+                  <Button color="success" size="lg" block>
+                    Checkout
+                  </Button>
+                </li>
+                <li class="list-group-item text-center">
+                  Item Name Here<br />
+                  <small className="text-muted">Item Description Here</small>
+                </li>
+              </ul>
             </Card>
           </Col> */}
         </Row>

@@ -54,6 +54,11 @@ class NavBar extends Component {
                   </Link>
                 </NavItem>
                 <NavItem>
+                  <Link to="/restaurantadmin" className="nav-link">
+                    Admin
+                  </Link>
+                </NavItem>
+                <NavItem>
                   <Button outline color="light" className="navBtns">
                     Sign In
                   </Button>
