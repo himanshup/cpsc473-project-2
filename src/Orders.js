@@ -80,7 +80,7 @@ class Orders extends Component {
                   Order Number:{topic.orderNumber}
                   <br />
                   {topic.resturant} <br />
-                  Items: {topic.orderItems}
+                  Item: {topic.orderItems}
                   <br />
                   Driver: {topic.driver}
                   <br />
