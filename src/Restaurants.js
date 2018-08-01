@@ -68,6 +68,13 @@ class Restaurants extends Component {
               </Col>
             ))}
         </Row>
+        <Row>
+          <Col>
+            <h1 className="display-4 text-center text-muted testTitle">
+              More Restaurants Coming Soon
+            </h1>
+          </Col>
+        </Row>
       </Container>
     );
   }

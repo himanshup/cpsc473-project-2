@@ -59,7 +59,7 @@ class Orders extends Component {
                   Order Number: {topic.orderNumber}
                   <br />
                   {topic.resturant} - {topic.resturantAddress} <br />
-                  Items: {topic.orderItems}
+                  Item: {topic.orderItems}
                   <br />
                   <br />
                   Time Submitted: {topic.timeSubmitted}
@@ -77,7 +77,7 @@ class Orders extends Component {
             {this.state.pastOrders &&
               this.state.pastOrders.map((topic, index) => (
                 <CardText key={index}>
-                  Order Number:{topic.orderNumber}
+                  Order Number: {topic.orderNumber}
                   <br />
                   {topic.resturant} <br />
                   Item: {topic.orderItems}
