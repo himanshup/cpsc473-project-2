@@ -6,6 +6,7 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
+  NavLink,
   Container,
   Button
 } from "reactstrap";
@@ -37,6 +38,21 @@ class NavBar extends Component {
             <NavbarToggler onClick={this.toggle} />
             <Collapse isOpen={this.state.isOpen} navbar>
               <Nav className="ml-auto" navbar>
+                <NavItem>
+                  <Link to="/orders" className="nav-link">
+                    Orders
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/restaurantscreen" className="nav-link">
+                    Restaurant
+                  </Link>
+                </NavItem>
+                <NavItem>
+                  <Link to="/driver" className="nav-link">
+                    Driver
+                  </Link>
+                </NavItem>
                 <NavItem>
                   <Button outline color="light" className="navBtns">
                     Sign In
