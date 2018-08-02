@@ -23,7 +23,8 @@ class BaskinRobbins extends Component {
       restaurantName: "",
       restaurantAddress: "",
       driverViewAvailable: true,
-      user: null
+      user: null,
+      userEmail: ""
     };
   }
 
@@ -32,7 +33,10 @@ class BaskinRobbins extends Component {
 
     firebase.auth().onAuthStateChanged(user => {
       user
-        ? this.setState({ user: user.email })
+        ? this.setState({
+            user: user,
+            userEmail: user.email
+          })
         : this.setState({ user: null });
     });
 
@@ -128,7 +132,7 @@ class BaskinRobbins extends Component {
                             menuItem.name,
                             this.state.restaurantName,
                             this.state.restaurantAddress,
-                            this.state.user
+                            this.state.userEmail
                           )
                         }
                       >

@@ -276,8 +276,6 @@ class Driver extends Component {
               <Route path="/driver/current" component={Current} />
             </Switch>
           </Col>
-          <Col sm="12" md="6" lg="4" />
-          <Col sm="12" md="6" lg="4" />
         </Row>
       </Container>
     );
