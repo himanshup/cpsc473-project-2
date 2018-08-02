@@ -11,7 +11,7 @@ import {
   Form,
   FormGroup,
   Label,
-  Input,
+  Input
 } from "reactstrap";
 import "./Order.css";
 import db from "./firebase";
@@ -102,8 +102,7 @@ class RestaurantAdmin extends Component {
 
   addUser = e => {
     e.preventDefault();
-    const userRef = db
-      .collection("restaurants/restaurant1/menu")
+    db.collection("restaurants/restaurant1/menu")
       .add({
         name: this.state.name,
         description: this.state.description,
