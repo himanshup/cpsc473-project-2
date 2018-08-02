@@ -60,7 +60,7 @@ class Landing extends Component {
       "background: url(https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af920b383b3a7b889beb1dd53998ecd3&auto=format&fit=crop&w=1652&q=80) no-repeat center center fixed; background-size: cover;";
   }
 
-  componentWillUnmount() {
+  componentWillMount() {
     document.body.style = "background: #f7f7f7;";
   }
 
