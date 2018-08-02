@@ -24,7 +24,9 @@ class BaskinRobbins extends Component {
       restaurantAddress: "",
       driverViewAvailable: true,
       user: null,
-      userEmail: ""
+      userEmail: "",
+      userName: "",
+      userAddress: ""
     };
   }
 
@@ -38,6 +40,18 @@ class BaskinRobbins extends Component {
             userEmail: user.email
           })
         : this.setState({ user: null });
+
+      db.collection("users")
+        .doc(this.state.userEmail)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            this.setState({
+              userName: doc.data().name,
+              userAddress: doc.data().address
+            });
+          }
+        });
     });
 
     db.doc("orders/settings")
@@ -79,17 +93,17 @@ class BaskinRobbins extends Component {
     this.unRegisterUserCurrentOrders();
   }
 
-  handleSubmit(orderNumber, item, restaurant, restAddress, userName) {
+  handleSubmit(orderNumber, item) {
     var d = new Date();
     const newOrder = {
       orderNumber: orderNumber,
-      username: userName,
-      userAddress: "123 Fake Street",
-      resturantAddress: restAddress,
+      username: this.state.userName,
+      userAddress: this.state.userAddress,
+      resturantAddress: this.state.restaurantAddress,
       orderItems: item,
       driver: "-unassigned-",
       status: "Order Sent",
-      resturant: restaurant,
+      resturant: this.state.restaurantName,
       timeSubmitted:
         d.toLocaleDateString() + " at " + new Date().toLocaleTimeString(),
       timePickedUp: "",
@@ -129,10 +143,7 @@ class BaskinRobbins extends Component {
                         onClick={e =>
                           this.handleSubmit(
                             this.state.orderNumber,
-                            menuItem.name,
-                            this.state.restaurantName,
-                            this.state.restaurantAddress,
-                            this.state.userEmail
+                            menuItem.name
                           )
                         }
                       >

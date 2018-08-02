@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import firebase from "./firebaseAuth";
+import db from "./firebase";
+
 import {
   Button,
   Form,
@@ -88,6 +90,18 @@ class Landing extends Component {
       })
       .catch(error => {
         console.log(error);
+      });
+    const colloection = db.collection("users");
+    const userID = this.state.email; // ID after created the user.
+    colloection
+      .doc(userID)
+      .set({
+        name: this.state.name,
+        email: this.state.email,
+        address: this.state.address
+      })
+      .then(() => {
+        console.log("done");
       });
     this.setState({
       email: "",
@@ -191,7 +205,7 @@ class Landing extends Component {
                   name="address"
                   className="form-control"
                   id="newAddress"
-                  placeHolder="Enter Street Address"
+                  placeholder="Enter Street Address"
                 />
               </FormGroup>
               <FormGroup>
@@ -203,7 +217,7 @@ class Landing extends Component {
                   name="city"
                   className="form-control"
                   id="newCity"
-                  placeHolder="City"
+                  placeholder="City"
                 />
               </FormGroup>
               <FormGroup>
@@ -215,7 +229,7 @@ class Landing extends Component {
                   name="state"
                   className="form-control"
                   id="newState"
-                  placeHolder="State"
+                  placeholder="State"
                 />
               </FormGroup>
               <FormGroup>
@@ -227,7 +241,7 @@ class Landing extends Component {
                   name="zip"
                   className="form-control"
                   id="newZip"
-                  placeHolder="Zipcode"
+                  placeholder="Zipcode"
                 />
               </FormGroup>
             </Form>
