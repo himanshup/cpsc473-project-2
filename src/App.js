@@ -19,6 +19,7 @@ import Contact from "./Contact";
 import DriverSignUp from "./DriverSignUp";
 import firebase from "./firebaseAuth";
 import { Container } from "reactstrap";
+import About from "./About";
 
 const NoMatch = ({ location }) => (
   <Container>
@@ -91,9 +92,10 @@ class App extends Component {
             <NavBar2 />
             <Switch>
               <Route exact path="/" component={Landing} />
-              <Route exact path="/restaurantsignup" component={RestAurantSignUp} />
-              <Route exact path="/driversignup" component={DriverSignUp} />
-              <Route exact path="/contact" component={Contact} />
+              <Route path="/restaurantsignup" component={RestAurantSignUp} />
+              <Route path="/driversignup" component={DriverSignUp} />
+              <Route path="/contact" component={Contact} />
+              <Route path="/about" component={About} />
             </Switch>
           </div>
         )}

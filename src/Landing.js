@@ -55,7 +55,7 @@ class Landing extends Component {
   componentDidMount() {
     document.title = "Welcome";
     document.body.style =
-      "background: url(https://images.unsplash.com/photo-1466978913421-dad2ebd01d17?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=719292378935d0f9168f11f9ad00558d&auto=format&fit=crop&w=1567&q=80) no-repeat center center fixed; background-size: cover;";
+      "background: url(https://images.unsplash.com/photo-1460306855393-0410f61241c7?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=af920b383b3a7b889beb1dd53998ecd3&auto=format&fit=crop&w=1652&q=80) no-repeat center center fixed; background-size: cover;";
   }
 
   componentWillUnmount() {

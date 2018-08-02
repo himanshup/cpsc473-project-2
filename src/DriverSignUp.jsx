@@ -68,7 +68,7 @@ class Driver extends Component {
     return (
       <Container>
         <Card className="shadow border-0">
-          <h1 className="text-center restaurant-title">Driver Sign Up</h1>
+          <h1 className="display-4 text-center restaurant-title">Driver Sign Up</h1>
           <Form id="loginForm" onSubmit={this.handleSubmit}>
             <FormGroup row>
               <Label for="name" sm={2}>

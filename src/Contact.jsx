@@ -66,7 +66,7 @@ class Contact extends Component {
     return (
       <Container>
         <Card className="shadow border-0">
-          <h1 className="restaurant-title text-center">Contact Us</h1>
+          <h1 className="display-4 restaurant-title text-center">Contact Us</h1>
           <Form id="loginForm">
             <FormGroup>
               <legend className="col-form-label">Feedback or Problem?</legend>

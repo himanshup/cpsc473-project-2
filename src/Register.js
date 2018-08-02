@@ -76,6 +76,7 @@ class Register extends Component {
                     class="form-control"
                     id="newName"
                     placeholder="Enter your full name"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -89,6 +90,7 @@ class Register extends Component {
                     id="newEmail"
                     aria-describedby="emailHelp"
                     placeholder="Enter email"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -101,6 +103,7 @@ class Register extends Component {
                     class="form-control"
                     id="newPassword"
                     placeholder="Password"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -113,6 +116,7 @@ class Register extends Component {
                     class="form-control"
                     id="newAddress"
                     placeHolder="Enter Street Address"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -125,6 +129,7 @@ class Register extends Component {
                     class="form-control"
                     id="newCity"
                     placeHolder="City"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -137,6 +142,7 @@ class Register extends Component {
                     class="form-control"
                     id="newState"
                     placeHolder="State"
+                    required
                   />
                 </FormGroup>
                 <FormGroup>
@@ -149,6 +155,7 @@ class Register extends Component {
                     class="form-control"
                     id="newZip"
                     placeHolder="Zipcode"
+                    required
                   />
                 </FormGroup>
                 <div className="text-center">
