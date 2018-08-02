@@ -45,3 +45,33 @@ a.custom-card:hover {
   background: #bd3f32;
   min-height: 70px;
 }
+
+.error-title {
+  margin-top: 200px;
+}
+
+.example-title {
+  margin-top: 50px;
+}
+
+#loginForm {
+  padding: 30px;
+}
+
+#loginCard {
+  margin-top: 100px;
+  /* opacity: 0.9; */
+}
+
+#bodyDiv {
+  height: 100%;
+}
+
+.jumbotron {
+  margin-top: 200px;
+}
+
+.jumbotron h1 {
+  /* font-size: 80px; */
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.7);
+}

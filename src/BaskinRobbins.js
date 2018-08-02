@@ -15,7 +15,7 @@ import "./Order.css";
 import db from "./firebase";
 import firebase from "./firebaseAuth";
 
-class McDonalds extends Component {
+class BaskinRobbins extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,12 +25,10 @@ class McDonalds extends Component {
       driverViewAvailable: true,
       user: null
     };
-
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
   componentDidMount() {
-    document.title = "McDonald's";
+    document.title = "Baskin Robbins";
 
     firebase.auth().onAuthStateChanged(user => {
       user
@@ -46,6 +44,22 @@ class McDonalds extends Component {
         }
       });
 
+    this.menu = db
+      .collection("restaurants/restaurant2/menu")
+      .onSnapshot(collection => {
+        const items = collection.docs.map(doc => doc.data());
+        this.setState({ items });
+      });
+
+    db.doc("restaurants/restaurant2")
+      .get()
+      .then(doc =>
+        this.setState({
+          restaurantName: doc.data().name,
+          restaurantAddress: doc.data().address
+        })
+      );
+
     this.unRegisterUserCurrentOrders = db
       .collection("orders")
       .where("username", "==", "harold")
@@ -54,31 +68,10 @@ class McDonalds extends Component {
         const currentOrders = collection.docs.map(doc => doc.data());
         this.setState({ currentOrders });
       });
-    this.item = db
-      .collection("restaurants/restaurant1/menu")
-      .onSnapshot(collection => {
-        const items = collection.docs.map(doc => doc.data());
-        this.setState({ items });
-      });
-    this.itemSoldOut = db
-      .collection("restaurants/restaurant1/menu")
-      .onSnapshot(collection => {
-        const itemsSoldOut = collection.docs.map(doc => doc.data());
-        this.setState({ itemsSoldOut });
-      });
-    db.doc("restaurants/restaurant1")
-      .get()
-      .then(doc =>
-        this.setState({
-          restaurantName: doc.data().name,
-          restaurantAddress: doc.data().address
-        })
-      );
   }
 
   componentWillUnmount() {
-    this.item();
-    this.itemSoldOut();
+    this.menu();
     this.unRegisterUserCurrentOrders();
   }
 
@@ -229,4 +222,4 @@ class McDonalds extends Component {
   }
 }
 
-export default McDonalds;
+export default BaskinRobbins;

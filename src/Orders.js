@@ -1,5 +1,10 @@
 import React, { Component } from "react";
-import { Container, Card, CardText, CardBody, CardTitle } from "reactstrap";
+import {
+  Container,
+  Card,
+  CardBody,
+  Table
+} from "reactstrap";
 import "./Order.css";
 import db from "./firebase";
 
@@ -12,88 +17,50 @@ class Orders extends Component {
   componentDidMount() {
     document.title = "Orders";
 
-    db.doc("orders/settings")
-      .get()
-      .then(document => {
-        if (document.exists) {
-          this.setState({ orderNumber: document.data().orderID });
-        }
-      });
-
-    this.unRegisterUserCurrentOrders = db
-      .collection("orders")
-      .where("username", "==", "harold")
-      .where("status", ">", "Complete")
-      .onSnapshot(collection => {
-        const currentOrders = collection.docs.map(doc => doc.data());
-        this.setState({ currentOrders });
-      });
-    this.unRegisterUserPastOrders = db
-      .collection("orders")
-      .where("username", "==", "harold")
-      .where("status", "==", "Complete")
-      .onSnapshot(collection => {
-        const pastOrders = collection.docs.map(doc => doc.data());
-        this.setState({ pastOrders });
-      });
+    this.unRegisterOrders = db.collection("orders").onSnapshot(collection => {
+      const orders = collection.docs.map(doc => doc.data());
+      this.setState({ orders });
+    });
   }
 
   componentWillUnmount() {
-    this.unRegisterUserCurrentOrders();
+    this.unRegisterOrders();
   }
 
   render() {
     return (
       <Container>
         <Card className="border-0 shadow">
-          <CardBody>
-            <h1 className="text-center">Current Orders</h1>
-            {this.state.currentOrders &&
-              this.state.currentOrders.map((topic, index) => (
-                <CardText key={index}>
-                  Status: {topic.status}
-                  <br />
-                  Driver: {topic.driver}
-                  <br />
-                  <br />
-                  Order Number: {topic.orderNumber}
-                  <br />
-                  {topic.resturant} - {topic.resturantAddress} <br />
-                  Item: {topic.orderItems}
-                  <br />
-                  <br />
-                  Time Submitted: {topic.timeSubmitted}
-                  <br />
-                  Time Picked up: {topic.timePickedUp}
-                  <br />
-                  <hr />
-                </CardText>
-              ))}
-          </CardBody>
-        </Card>
-        <Card className="border-0 shadow">
-          <CardBody>
-            <h1 className="text-center">Past Orders</h1>
-            {this.state.pastOrders &&
-              this.state.pastOrders.map((topic, index) => (
-                <CardText key={index}>
-                  Order Number: {topic.orderNumber}
-                  <br />
-                  {topic.resturant} <br />
-                  Item: {topic.orderItems}
-                  <br />
-                  Driver: {topic.driver}
-                  <br />
-                  <br />
-                  Time Submitted: {topic.timeSubmitted}
-                  <br />
-                  Time Picked up: {topic.timePickedUp}
-                  <br />
-                  Time Delivered: {topic.timeDelivered}
-                  <hr />
-                </CardText>
-              ))}
-          </CardBody>
+          <div>
+            <CardBody>
+              <h1 className="text-center">Orders</h1>
+            </CardBody>
+            <Table>
+              <thead>
+                <tr>
+                  <th>Order #</th>
+                  <th>User</th>
+                  <th>Driver</th>
+                  <th>Resturant</th>
+                  <th>Items</th>
+                  <th>Status</th>
+                </tr>
+              </thead>
+              <tbody>
+                {this.state.orders &&
+                  this.state.orders.map((topic, index) => (
+                    <tr key={index}>
+                      <th scope="row">{topic.orderNumber}</th>
+                      <td>{topic.username}</td>
+                      <td>{topic.driver}</td>
+                      <td>{topic.resturant}</td>
+                      <td>{topic.orderItems}</td>
+                      <td>{topic.status}</td>
+                    </tr>
+                  ))}
+              </tbody>
+            </Table>
+          </div>
         </Card>
       </Container>
     );

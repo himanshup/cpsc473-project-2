@@ -23,5 +23,9 @@ li {
 }
 
 .testTitle {
-  margin-top: 250px;
+  margin-top: 80px;
+}
+
+#orderContainer {
+  background: white;
 }
