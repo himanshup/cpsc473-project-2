@@ -33,7 +33,7 @@ class Orders extends Component {
         <Card className="border-0 shadow">
           <div>
             <CardBody>
-              <h1 className="text-center">Orders</h1>
+              <h1 className="display-4 text-center">Orders</h1>
             </CardBody>
             <Table>
               <thead>

@@ -120,7 +120,7 @@ class BaskinRobbins extends Component {
   render() {
     return (
       <Container>
-        <h1 className="text-center restaurant-title">
+        <h1 className="display-4 text-center restaurant-title" style={{ fontSize: "50px"}}>
           {this.state.restaurantName} ({this.state.restaurantAddress})
         </h1>
         <Row>

@@ -14,17 +14,43 @@ import {
   Badge
 } from "reactstrap";
 import db from "./firebase";
+import firebase from "./firebaseAuth";
 
 class Restaurants extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: ""
+      name: "",
+      user: null,
+      userEmail: "",
+      userName: "",
+      userAddress: ""
     };
   }
 
   componentDidMount() {
     document.title = "Restaurants";
+
+    firebase.auth().onAuthStateChanged(user => {
+      user
+        ? this.setState({
+            user: user,
+            userEmail: user.email
+          })
+        : this.setState({ user: null });
+
+      db.collection("users")
+        .doc(this.state.userEmail)
+        .get()
+        .then(doc => {
+          if (doc.exists) {
+            this.setState({
+              userName: doc.data().name,
+              userAddress: doc.data().address
+            });
+          }
+        });
+    });
 
     this.restaurantCollection = db
       .collection("restaurants")
@@ -51,6 +77,9 @@ class Restaurants extends Component {
   render() {
     return (
       <Container>
+        <h1 className="display-4 text-center restaurant-title">
+          Welcome {this.state.userName}
+        </h1>
         <Row>
           {this.state.courses &&
             this.state.courses.map((topic, index) => (
@@ -114,7 +143,10 @@ class Restaurants extends Component {
         </Row>
         <Row>
           <Col>
-            <h1 className="display-4 text-center text-muted testTitle">
+            <h1
+              className="display-4 text-center text-muted testTitle"
+              style={{ fontSize: "30px" }}
+            >
               More Restaurants Coming Soon
             </h1>
           </Col>

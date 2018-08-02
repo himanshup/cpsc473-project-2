@@ -24,7 +24,7 @@ class Problem extends Component {
   render() {
     return (
       <Container>
-        <h1 className="text-center restaurant-title">Problems</h1>
+        <h1 className="display-4 text-center restaurant-title">Problems</h1>
         <Card className="border-0 shadow">
           <ListGroup>
             {this.state.problem &&

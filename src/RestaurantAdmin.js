@@ -163,7 +163,7 @@ class RestaurantAdmin extends Component {
   render() {
     return (
       <Container>
-        <h1 className="text-center restaurant-title">Restaurant Admin Page</h1>
+        <h1 className="display-4 text-center restaurant-title">Restaurant Admin Page</h1>
         <Row>
           <Col sm="12" md="6" lg="6">
             <Card className="border-0 shadow">

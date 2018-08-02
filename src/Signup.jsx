@@ -53,7 +53,7 @@ export default class Signup extends React.Component {
   render() {
     return (
       <Container>
-        <h1 className="text-center restaurant-title">Sign Up Requests</h1>
+        <h1 className="display-4 text-center restaurant-title">Sign Up Requests</h1>
         <Card className="border-0 shadow">
           <Nav tabs>
             <NavItem>

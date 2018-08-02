@@ -31,7 +31,7 @@ class RestaurantScreen extends Component {
         <Card className="border-0 shadow">
           <div>
             <CardBody>
-              <h1 className="text-center">Restaurant Screen</h1>
+              <h1 className="display-4 text-center">Restaurant Screen</h1>
               <h4 className="text-center">Open Requests</h4>
             </CardBody>
             <Table>
