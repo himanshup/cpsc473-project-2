@@ -48,10 +48,6 @@ class App extends Component {
     // document.body.style = "background: #f7f7f7;";
   }
 
-  // componentWillUnmount() {
-  //   document.body.style = "background: #f7f7f7;";
-  // }
-
   authListener() {
     firebase.auth().onAuthStateChanged(user => {
       console.log(user);
