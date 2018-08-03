@@ -26,7 +26,7 @@ const NoMatch = ({ location }) => (
     <div className="text-center">
       <h1 className="display-1 error-title">Error 404</h1>
       <h2 className="display-4">
-        The path <code>{location.pathname}</code> doesn't exist.
+        The path <code>{location.pathname}</code> does not exist.
       </h2>
     </div>
   </Container>
@@ -45,12 +45,12 @@ class App extends Component {
 
   componentDidMount() {
     this.authListener();
-    document.body.style = "background: #f7f7f7;";
+    // document.body.style = "background: #f7f7f7;";
   }
 
-  componentWillUnmount() {
-    document.body.style = "background: #f7f7f7;";
-  }
+  // componentWillUnmount() {
+  //   document.body.style = "background: #f7f7f7;";
+  // }
 
   authListener() {
     firebase.auth().onAuthStateChanged(user => {
@@ -101,7 +101,6 @@ class App extends Component {
               <Route path="/driversignup" component={DriverSignUp} />
               <Route path="/contact" component={Contact} />
               <Route path="/about" component={About} />
-              <Route component={NoMatch} />
             </Switch>
           </div>
         )}
